@@ -1,0 +1,10 @@
+pytz==2020.1
+sqlparse>=0.3.1,<0.3.9
+six>=1.13.0,<1.14.0
+Django>=2.2.10,<2.2.20
+Djangorestframework>=3.10.0,<3.11.0
+Markdown>=3.2.0,<3.2.9
+django-filter>=2.3.0,<2.3.9
+psycopg2>=2.7.5,<2.8.0
+pillow>=6.2.2,<6.2.9
+flake8>=3.6.0,<3.7.0
