@@ -129,5 +129,4 @@ dmypy.json
 .pyre/
 
 .idea
-app/db.sqlite3
 app/core/migrations/
