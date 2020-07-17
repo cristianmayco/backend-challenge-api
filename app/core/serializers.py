@@ -1,27 +1,53 @@
 from rest_framework import serializers
 
-from .models import Manufacture, Product
+from . import models
+
+
+class ManufactureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Manufacture
+        fields = ('id', 'name',)
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    # manufactures = ManufactureSerializer(read_only=True)
-
     class Meta:
-        model = Product
+        model = models.Product
         fields = (
             'id',
             'name',
             'description',
             'barcode',
-            # 'manufactures',
             'manufacture',
             'unit_price'
         )
 
 
-class ManufactureSerializer(serializers.ModelSerializer):
-    products = ProductSerializer(many=True, read_only=True)
-
+class DeliverySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Manufacture
-        fields = ('id', 'name', 'products')
+        model = models.Delivery
+        fields = ('id', 'mode',)
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Payment
+        fields = ('id', 'mode', 'installments')
+
+
+class ConsumerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Consumer
+        fields = ('id', 'name', 'phone', 'email')
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Order
+        fields = (
+            'id',
+            'products',
+            'consumer',
+            'delivery',
+            'payment',
+            'status'
+        )
