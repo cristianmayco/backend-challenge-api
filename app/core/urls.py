@@ -1,7 +1,14 @@
 from django.urls import path
-# from rest_framework.routers import SimpleRouter
+from rest_framework.routers import SimpleRouter
 
 from . import views
+
+# V2 API
+router = SimpleRouter()
+router.register('products', views.ProductViewSet)
+router.register('manufactures', views.ManufactureViewSet)
+router.register('consumers', views.ConsumerViewSet)
+router.register('orders', views.OrderViewSet)
 
 urlpatterns = [
     path('manufactures/', views.ManufacturesAPIView.as_view(), name='manufactures'),
