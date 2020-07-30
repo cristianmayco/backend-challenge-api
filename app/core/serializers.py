@@ -10,6 +10,8 @@ class ManufactureSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    manufacture = ManufactureSerializer(read_only=True)
+
     class Meta:
         model = models.Product
         fields = (
@@ -41,6 +43,11 @@ class ConsumerSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
+    products = ProductSerializer(many=True, read_only=True)
+    consumer = ConsumerSerializer(read_only=True)
+    delivery = DeliverySerializer(read_only=True)
+    payment = PaymentSerializer(read_only=True)
+
     class Meta:
         model = models.Order
         fields = (
